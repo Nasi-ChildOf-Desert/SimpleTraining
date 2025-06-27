@@ -14,8 +14,9 @@ namespace CaesarCiper
     public partial class Form1 : Form
     {
         String line;
-        StringBuilder stb, stbS;
+        StringBuilder stb, stbS, stbUnS;
         string[] lineWords;
+
         public Form1()
         {
             InitializeComponent();
@@ -53,6 +54,8 @@ namespace CaesarCiper
             int nShift = 3;
             int i = 0;
             Char ch;
+            progressBar1.Minimum = 0;
+            progressBar1.Maximum = stb.Length;
             while (i < stb.Length)
             {
                 ch = stb[i];
@@ -71,11 +74,19 @@ namespace CaesarCiper
                 i++;
 
                 stbS.Append(ch);
+                progressBar1.Value++;
             }
             txtsecured.Text = stbS.ToString();
             txtMsg.Text += "doCaesarCiper:\n ";
             Thread.Sleep(2000);
         }
+
+        private void btnSolve_Click(object sender, EventArgs e)
+        {
+            doSolved();
+            txtSolved.Text = stbUnS.ToString(); ;
+        }
+
         private void ReadFile()
         {
             try
@@ -108,6 +119,35 @@ namespace CaesarCiper
             }
             Thread.Sleep(2000);
         }
+       // to Do 
+        private void doSolved()
+        {
+            stbUnS = new StringBuilder();
+            int nShift = 3;
+            int i = 0;
+            Char ch;
+            while (i < stbS.Length)
+            {
+                ch = stbS[i];
+                if (Char.IsLetter(stbS[i]))
+                {
+                    if (Char.IsUpper(stbS[i]))
+                    {
+                        ch = (Char)(((int)stbS[i] - nShift) + 26 );
+                    }
+                    else if (Char.IsLower(stbS[i]))
+                    {
+                        ch = (Char)(((int)stbS[i] - nShift) + 26);
+                    }
 
+                }
+                i++;
+
+                stbUnS.Append(ch);
+            }
+            txtsecured.Text = stbS.ToString();
+            txtMsg.Text += "doCaesarCiper:\n ";
+            Thread.Sleep(2000);
+        }
     }
 }
