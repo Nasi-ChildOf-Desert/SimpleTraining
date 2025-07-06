@@ -16,15 +16,30 @@ namespace CaesarCiper
         String line;
         StringBuilder stb, stbS, stbUnS;
         string[] lineWords;
+        Thread thReadFile;
+        Thread thDecode;
+        private bool _run;
 
         public Form1()
         {
             InitializeComponent();
+            initThreads();
         }
+
+        private void initThreads()
+        {
+             thReadFile = new Thread(ReadFileToStringBuilder);
+             thDecode = new Thread(doCaesarCiper);
+            _run = false;
+
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
-            ReadFileToStringBuilder();
-            doCaesarCiper();
+            thReadFile.Start();
+            thDecode.Start();
+            _run = true;
+
         }
         private void ReadFileToStringBuilder()
         {
@@ -50,35 +65,47 @@ namespace CaesarCiper
         }
         private void doCaesarCiper()
         {
-            stbS = new StringBuilder();
-            int nShift = 3;
-            int i = 0;
-            Char ch;
-            progressBar1.Minimum = 0;
-            progressBar1.Maximum = stb.Length;
-            while (i < stb.Length)
+            while (_run)
             {
-                ch = stb[i];
-                if (Char.IsLetter(stb[i]))
+                
+                if (stb == null)
                 {
-                    if (Char.IsUpper(stb[i]))
-                    {
-                        ch = (Char)(((int)stb[i] + nShift - 65) % 26 + 65);
-                    }
-                    else if (Char.IsLetter(stb[i]) && Char.IsLower(stb[i]))
-                    {
-                        ch = (Char)(((int)stb[i] + nShift - 97) % 26 + 97);
-                    }
-                   
+                    Thread.Sleep(20);
+                    continue;
                 }
-                i++;
+                stbS = new StringBuilder();
+                int nShift = 3;
+                int i = 0;
+                Char ch;
+               // progressBar1.Minimum = 0;
+                //progressBar1.Maximum = stb.Length;
+                while (i < stb.Length)
+                {
+                    ch = stb[i];
+                    if (Char.IsLetter(stb[i]))
+                    {
+                        if (Char.IsUpper(stb[i]))
+                        {
+                            ch = (Char)(((int)stb[i] + nShift - 65) % 26 + 65);
+                        }
+                        else if (Char.IsLetter(stb[i]) && Char.IsLower(stb[i]))
+                        {
+                            ch = (Char)(((int)stb[i] + nShift - 97) % 26 + 97);
+                        }
 
-                stbS.Append(ch);
-                progressBar1.Value++;
+                    }
+                    i++;
+
+                    stbS.Append(ch);
+                 //   progressBar1.Value++;
+                }
+                //     txtsecured.Text = stbS.ToString();
+                //  txtMsg.Text += "doCaesarCiper:\n ";
+                stb.Clear();
+                stb = null;
+                Thread.Sleep(2000);
             }
-            txtsecured.Text = stbS.ToString();
-            txtMsg.Text += "doCaesarCiper:\n ";
-            Thread.Sleep(2000);
+           
         }
 
         private void btnSolve_Click(object sender, EventArgs e)
