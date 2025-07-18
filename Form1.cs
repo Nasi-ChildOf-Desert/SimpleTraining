@@ -13,7 +13,7 @@ namespace CaesarCiper
 {
     public partial class Form1 : Form
     {
-        String line, writeStr;
+        String  writeStr;
         StringBuilder stb , stbUnS;
         StringBuilder stbS;
         string[] lineWords;
@@ -49,8 +49,7 @@ namespace CaesarCiper
 
         private void WriteStringToFile()
         {
-
-            var _sampleFilePath = "D:\\project\\testCaesar\\ceasarcpded.txt";
+            var _sampleFilePath = "D:\\project\\testCaesar\\ceasarcpded33.txt";
             File.WriteAllText(_sampleFilePath, writeStr);
             txtMsg.Invoke(new Action(() =>
             {
@@ -71,44 +70,10 @@ namespace CaesarCiper
         }
         private void ReadFileToStringBuilder()
         {
-            #region .:Read all file in one command:.
-            /* try
-             {
-                 StreamReader sr = new StreamReader("D:\\project\\testCaesar\\ceasar.txt");
-                 //what is best scope for lock ?? just line 55 or all of them till line 63?
-
-                     stb = new StringBuilder(sr.ReadToEnd());
-
-                     sr.Close();
-
-                     txtFile.Invoke(new Action(() =>
-                     {
-                         txtFile.Text = stb.ToString();
-                     }));
-
-
-                 DataReceived(this, stb);
-             }
-             catch (Exception e)
-             {
-
-                 txtMsg.Invoke(new Action(() =>
-                  {
-                      txtMsg.Text = "Exception: " + e.Message;
-                  }));
-             }
-             finally
-             {
-                 txtMsg.Invoke(new Action(() =>
-                 {
-                     txtMsg.Text += "finally: \n";
-                 }));
-             } */
-            #endregion
-
+          
             try
             {
-                var _sampleFilePath = "D:\\project\\testCaesar\\ceasar.txt";
+                var _sampleFilePath = "D:\\project\\testCaesar\\test1.txt";
                 var streamReader = new StreamReader(_sampleFilePath);
 
                 // Part 1: create new FileInfo get Length.
@@ -189,7 +154,6 @@ namespace CaesarCiper
         }
         private void doCaesarCiper()
         {
-
             while (_run)
             {
                 if (!isReadCompleted)
@@ -242,7 +206,6 @@ namespace CaesarCiper
                     var part = stSecured.Substring((stSecured.Length - 500), 500);
                     txtsecured.Invoke(new Action(() =>
                     {
-
                         txtsecured.Text = part;
                         txtMsg.Text += "doCaesarCiper:\n ";
                     }));
@@ -259,11 +222,6 @@ namespace CaesarCiper
 
         }
 
-        private void btnSolve_Click(object sender, EventArgs e)
-        {
-            //  doSolved();
-            //  txtSolved.Text = stbUnS.ToString(); ;
-        }
 
     }
 }

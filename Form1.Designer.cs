@@ -31,7 +31,6 @@ namespace CaesarCiper
         {
             this.btnStart = new System.Windows.Forms.Button();
             this.txtFile = new System.Windows.Forms.TextBox();
-            this.txtSolved = new System.Windows.Forms.TextBox();
             this.txtsecured = new System.Windows.Forms.TextBox();
             this.txtMsg = new System.Windows.Forms.TextBox();
             this.btnDecode = new System.Windows.Forms.Button();
@@ -40,7 +39,6 @@ namespace CaesarCiper
             this.label3 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -62,14 +60,6 @@ namespace CaesarCiper
             this.txtFile.Size = new System.Drawing.Size(645, 97);
             this.txtFile.TabIndex = 1;
             // 
-            // txtSolved
-            // 
-            this.txtSolved.Location = new System.Drawing.Point(8, 364);
-            this.txtSolved.Multiline = true;
-            this.txtSolved.Name = "txtSolved";
-            this.txtSolved.Size = new System.Drawing.Size(645, 97);
-            this.txtSolved.TabIndex = 1;
-            // 
             // txtsecured
             // 
             this.txtsecured.Location = new System.Drawing.Point(8, 229);
@@ -81,7 +71,7 @@ namespace CaesarCiper
             // 
             // txtMsg
             // 
-            this.txtMsg.Location = new System.Drawing.Point(8, 513);
+            this.txtMsg.Location = new System.Drawing.Point(2, 378);
             this.txtMsg.Multiline = true;
             this.txtMsg.Name = "txtMsg";
             this.txtMsg.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -96,7 +86,6 @@ namespace CaesarCiper
             this.btnDecode.TabIndex = 2;
             this.btnDecode.Text = "Decode";
             this.btnDecode.UseVisualStyleBackColor = true;
-            this.btnDecode.Click += new System.EventHandler(this.btnSolve_Click);
             // 
             // label1
             // 
@@ -125,7 +114,7 @@ namespace CaesarCiper
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 481);
+            this.label3.Location = new System.Drawing.Point(8, 355);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 3;
@@ -149,32 +138,19 @@ namespace CaesarCiper
             this.label4.TabIndex = 3;
             this.label4.Text = "Encoding Process:";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 341);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 20);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "DEcoding Text:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 582);
+            this.ClientSize = new System.Drawing.Size(678, 441);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDecode);
             this.Controls.Add(this.txtMsg);
             this.Controls.Add(this.txtsecured);
-            this.Controls.Add(this.txtSolved);
             this.Controls.Add(this.txtFile);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
@@ -190,13 +166,11 @@ namespace CaesarCiper
         private System.Windows.Forms.TextBox txtsecured;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMsg;
-        private System.Windows.Forms.TextBox txtSolved;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnDecode;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
     }
 }
 
